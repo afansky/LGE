@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StarScript : MonoBehaviour {
 
-	public SceneLoadScript.Star star;
+	public Star star;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class StarScript : MonoBehaviour {
 
 	void OnMouseDown() {
 		Debug.Log("Star clicked");
-		Serializer.Save<SceneLoadScript.Star> ("star.st", star);
+		Serializer.Save<Star> ("star.st", star);
 		Application.LoadLevel ("star_scene");
 	}
 }

@@ -16,8 +16,8 @@ TagManager:
   - 
   - 
   - Background
-  - Stars
-  - 
+  - Stars and planets
+  - Ships
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1164817215
     locked: 1
-  - name: Stars
+  - name: Stars and planets
     uniqueID: 1934241455
+    locked: 0
+  - name: Ships
+    uniqueID: 3296518937
     locked: 0

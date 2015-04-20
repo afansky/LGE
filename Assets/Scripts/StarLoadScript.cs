@@ -7,9 +7,10 @@ public class StarLoadScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SceneLoadScript.Star star = Serializer.Load<SceneLoadScript.Star> ("star.st");
-		foreach (SceneLoadScript.Planet planetModel in star.planets) {
-			Instantiate (planet, new Vector3 (planetModel.x, planetModel.y, planetModel.z), Quaternion.identity);
+		Star star = Serializer.Load<Star> ("star.st");
+		foreach (Planet planetModel in star.planets) {
+			Transform planetObject = Instantiate (planet, new Vector3 (planetModel.x, planetModel.y, 0), Quaternion.identity) as Transform;
+			planetObject.gameObject.GetComponent<PlanetScript>().planet = planetModel;
 		}
 	}
 	

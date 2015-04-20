@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlanetScript : MonoBehaviour {
 
-	public SceneLoadScript.Planet planet;
+	public Planet planet;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,7 @@ public class PlanetScript : MonoBehaviour {
 
 	void OnMouseDown() {
 		Debug.Log("Planet clicked");
-		Serializer.Save<SceneLoadScript.Planet> ("planet.st", planet);
+		Serializer.Save<Planet> ("planet.st", planet);
 		Application.LoadLevel ("planet_scene");
 	}
 

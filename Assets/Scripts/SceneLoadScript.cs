@@ -14,7 +14,7 @@ public class SceneLoadScript : MonoBehaviour {
 		List<Star> stars = GenerateStars ();
 		foreach (Star starModel in stars) {
 			Debug.Log("Creating a star");
-			Transform instance = Instantiate (star, new Vector3 (starModel.x, starModel.y, starModel.z), Quaternion.identity) as Transform;
+			Transform instance = Instantiate (star, new Vector3 (starModel.x, starModel.y, 0), Quaternion.identity) as Transform;
 			instance.GetComponent<StarScript>().star = starModel;
 		}
 	}
@@ -36,53 +36,40 @@ public class SceneLoadScript : MonoBehaviour {
 	Star createFirstStar ()
 	{
 		List<Planet> planets = new List<Planet> ();
-		planets.Add (new Planet (10, 10, 0));
-		planets.Add (new Planet (0, 10, 0));
-		planets.Add (new Planet (10, 0, 0));
-		return new Star (-10, -10, 0, planets);
+		Planet planet = new Planet (10, 10);
+		planets.Add (planet);
+		planets.Add (new Planet (0, 10));
+		planets.Add (new Planet (10, 0));
+		Star star = new Star (-10, -10, planets);
+		ShipRegisty.AddShip (new Ship (10, 10), star, planet);
+		return star;
+	}
+
+	private Planet createPlanetWithShip(int x, int y, Star star) 
+	{
+		Planet planet = new Planet (x, y);
+
+		Ship ship = new Ship (15, 15);
+
+		ShipRegisty.AddShip (ship, star, planet);
+
+		return planet;
 	}
 
 	Star createSecondStar ()
 	{
-		Planet planet = new Planet (-10, -10, 0);
+		Planet planet = new Planet (-10, -10);
 		List<Planet> planets = new List<Planet> ();
 		planets.Add (planet);
-		return new Star (0, 0, 0, planets);
+		return new Star (0, 0, planets);
 	}
 
 	Star createThirdStar ()
 	{
-		Planet planet = new Planet (0, 0, 0);
+		Planet planet = new Planet (0, 0);
 		List<Planet> planets = new List<Planet> ();
 		planets.Add (planet);
-		return new Star (10, 10, 0, planets);
+		return new Star (10, 10, planets);
 	}
 
-	[Serializable()]
-	public class Star {
-		public int x;
-		public int y;
-		public int z;
-		public List<Planet> planets;
-
-		public Star(int x, int y, int z, List<Planet> planets) {
-			this.x = x;
-			this.y = y;
-			this.z = z;
-			this.planets = planets;
-		}
-	}
-
-	[Serializable()]
-	public class Planet {
-		public int x;
-		public int y;
-		public int z;
-
-		public Planet(int x, int y, int z) {
-			this.x = x;
-			this.y = y;
-			this.z = z;
-		}
-	}
 }
