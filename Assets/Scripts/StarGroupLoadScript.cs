@@ -11,6 +11,8 @@ public class StarGroupLoadScript : MonoBehaviour {
 	void Start () {
 		Debug.Log("Scene started");
 
+		GameContext.CurrentPlayer = new Player ();
+
 		List<Star> stars = GenerateStars ();
 		foreach (Star starModel in stars) {
 			Debug.Log("Creating a star");
@@ -41,8 +43,15 @@ public class StarGroupLoadScript : MonoBehaviour {
 		planets.Add (new Planet (0, 10));
 		planets.Add (new Planet (10, 0));
 		Star star = new Star (-10, -10, planets);
-		PlayerFleet.AddShip (new Ship (10, 10), star, planet);
-		PlayerFleet.AddShip (new Ship (0, 30), star, planet);
+
+		Ship myShip = new Ship (10, 10);
+		myShip.Player = GameContext.CurrentPlayer;
+		PlayerFleet.AddShip (myShip, star, planet);
+
+		Ship anotherShip = new Ship (0, 30);
+		anotherShip.Player = new Player();
+		PlayerFleet.AddShip (anotherShip, star, planet);
+
 		return star;
 	}
 

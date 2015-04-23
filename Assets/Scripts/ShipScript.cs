@@ -13,7 +13,8 @@ public class ShipScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0) && selected && GUIUtility.hotControl == 0) {
+		if (Input.GetMouseButtonDown (0) && selected
+		    && GUIUtility.hotControl == 0 && ship.IsOwner(GameContext.CurrentPlayer)) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 
