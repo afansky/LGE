@@ -16,7 +16,7 @@ public class StarLoadScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		PlayerFleet.UpdateShipPositions ();
 	}
 
 	void OnGUI() {

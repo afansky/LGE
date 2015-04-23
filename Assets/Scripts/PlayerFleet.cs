@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShipRegisty {
+public class PlayerFleet {
 
 	private static List<Ship> ships = new List<Ship> ();
 
@@ -38,7 +38,8 @@ public class ShipRegisty {
 	public static void UpdateShipPositions() {
 		foreach (Ship ship in ships) {
 			if (ship.IsMoving()) {
-				Vector3 newPosition = Vector2.MoveTowards (new Vector3(ship.x, ship.y, 0), ship.destination, ship.speed * Time.deltaTime);
+				Vector3 newPosition = Vector2.MoveTowards (new Vector3(ship.x, ship.y, 0),
+				                                           ship.destination.GetValueOrDefault(), ship.speed * Time.deltaTime);
 				ship.x = newPosition.x;
 				ship.y = newPosition.y;
 			}

@@ -12,7 +12,7 @@ public class PlanetLoadScript : MonoBehaviour {
 	void Start () {
 		planet = Serializer.Load<Planet> ("planet.st");
 
-		List<Ship> ships = ShipRegisty.GetShipsForPlanet (planet);
+		List<Ship> ships = PlayerFleet.GetShipsForPlanet (planet);
 		foreach (Ship ship in ships) {
 			Transform shipObject = Instantiate (shipPrefab, new Vector3 (ship.x, ship.y, 0), Quaternion.identity) as Transform;
 			shipObject.gameObject.GetComponent<ShipScript>().ship = ship;
@@ -21,8 +21,8 @@ public class PlanetLoadScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ShipRegisty.UpdateShipPositions ();
-		List<Ship> ships = ShipRegisty.GetShipsForPlanet (planet);
+		PlayerFleet.UpdateShipPositions ();
+		List<Ship> ships = PlayerFleet.GetShipsForPlanet (planet);
 		foreach(GameObject shipObject in GameObject.FindGameObjectsWithTag("Ship")) {
 			foreach(Ship ship in ships) {
 				if(shipObject.GetComponent<ShipScript>().ship.id == ship.id) {

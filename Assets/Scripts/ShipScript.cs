@@ -9,12 +9,11 @@ public class ShipScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ship.destination = transform.position;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0) && selected) {
+		if (Input.GetMouseButtonDown (0) && selected && GUIUtility.hotControl == 0) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 
@@ -25,7 +24,7 @@ public class ShipScript : MonoBehaviour {
 			} else {
 				Vector3 newPosition = ray.GetPoint(-Camera.main.transform.position.z);
 				newPosition.z = 0;
-				ship = ShipRegisty.UpdateShipDestination(ship, newPosition);
+				ship = PlayerFleet.UpdateShipDestination(ship, newPosition);
 			}
 
 		}

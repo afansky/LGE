@@ -8,7 +8,7 @@ public class Ship {
 	public Star star;
 	public Planet planet;
 	public float speed = 5.0f;
-	public Vector3 destination;
+	public Vector3? destination = null;
 
 	public Ship(float x, float y) {
 		this.x = x;
@@ -16,7 +16,7 @@ public class Ship {
 	}
 
 	public bool IsMoving() {
-		return !Mathf.Approximately (x, destination.x)
-			|| !Mathf.Approximately (y, destination.y);
+		return destination.HasValue && (!Mathf.Approximately (x, destination.GetValueOrDefault().x)
+			|| !Mathf.Approximately (y, destination.GetValueOrDefault().x));
 	}
 }

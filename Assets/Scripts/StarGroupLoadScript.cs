@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class SceneLoadScript : MonoBehaviour {
+public class StarGroupLoadScript : MonoBehaviour {
 
 	public Transform star;
 
@@ -21,7 +21,7 @@ public class SceneLoadScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		PlayerFleet.UpdateShipPositions ();
 	}
 
 	List<Star> GenerateStars ()
@@ -41,8 +41,8 @@ public class SceneLoadScript : MonoBehaviour {
 		planets.Add (new Planet (0, 10));
 		planets.Add (new Planet (10, 0));
 		Star star = new Star (-10, -10, planets);
-		ShipRegisty.AddShip (new Ship (10, 10), star, planet);
-		ShipRegisty.AddShip (new Ship (0, 30), star, planet);
+		PlayerFleet.AddShip (new Ship (10, 10), star, planet);
+		PlayerFleet.AddShip (new Ship (0, 30), star, planet);
 		return star;
 	}
 
@@ -52,7 +52,7 @@ public class SceneLoadScript : MonoBehaviour {
 
 		Ship ship = new Ship (15, 15);
 
-		ShipRegisty.AddShip (ship, star, planet);
+		PlayerFleet.AddShip (ship, star, planet);
 
 		return planet;
 	}
