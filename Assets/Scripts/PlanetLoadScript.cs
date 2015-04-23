@@ -6,19 +6,30 @@ public class PlanetLoadScript : MonoBehaviour {
 
 	public Transform shipPrefab;
 
+	private Planet planet;
+
 	// Use this for initialization
 	void Start () {
-		Planet planet = Serializer.Load<Planet> ("planet.st");
+		planet = Serializer.Load<Planet> ("planet.st");
 
 		List<Ship> ships = ShipRegisty.GetShipsForPlanet (planet);
 		foreach (Ship ship in ships) {
-			Instantiate (shipPrefab, new Vector3 (ship.x, ship.y, 0), Quaternion.identity);
+			Transform shipObject = Instantiate (shipPrefab, new Vector3 (ship.x, ship.y, 0), Quaternion.identity) as Transform;
+			shipObject.gameObject.GetComponent<ShipScript>().ship = ship;
 		}	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		ShipRegisty.UpdateShipPositions ();
+		List<Ship> ships = ShipRegisty.GetShipsForPlanet (planet);
+		foreach(GameObject shipObject in GameObject.FindGameObjectsWithTag("Ship")) {
+			foreach(Ship ship in ships) {
+				if(shipObject.GetComponent<ShipScript>().ship.id == ship.id) {
+					shipObject.transform.position = new Vector3(ship.x, ship.y, 0f);
+				}
+			}
+		}
 	}
 		
 	void OnGUI() {

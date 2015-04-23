@@ -42,6 +42,7 @@ public class SceneLoadScript : MonoBehaviour {
 		planets.Add (new Planet (10, 0));
 		Star star = new Star (-10, -10, planets);
 		ShipRegisty.AddShip (new Ship (10, 10), star, planet);
+		ShipRegisty.AddShip (new Ship (0, 30), star, planet);
 		return star;
 	}
 
