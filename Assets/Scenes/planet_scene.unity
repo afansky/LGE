@@ -154,6 +154,7 @@ GameObject:
   - 124: {fileID: 1066783211}
   - 81: {fileID: 1066783210}
   - 114: {fileID: 1066783215}
+  - 114: {fileID: 1066783216}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -238,3 +239,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 404520, guid: b49892691bb6b4992848865548c31b5d, type: 2}
+--- !u!114 &1066783216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1066783209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9ac740db056457aae0d9431b1d3dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundary: 50
+  speed: 15
