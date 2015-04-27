@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 404520, guid: b49892691bb6b4992848865548c31b5d, type: 2}
+  planetLargePrefab: {fileID: 416452, guid: aca4d7bafc74648ff9cca810b23fc776, type: 2}
 --- !u!114 &1066783216
 MonoBehaviour:
   m_ObjectHideFlags: 0

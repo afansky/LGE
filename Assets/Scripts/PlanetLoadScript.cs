@@ -5,12 +5,14 @@ using System.Collections.Generic;
 public class PlanetLoadScript : MonoBehaviour {
 
 	public Transform shipPrefab;
+	public Transform planetLargePrefab;
 
 	private Planet planet;
 
 	// Use this for initialization
 	void Start () {
 		planet = GameContext.CurrentPlanet;
+		Instantiate (planetLargePrefab, new Vector3 (0, 0, 0), Quaternion.identity);
 
 		List<Ship> ships = PlayerFleet.GetShipsForPlanet (planet);
 		foreach (Ship ship in ships) {
