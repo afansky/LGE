@@ -16,8 +16,7 @@ public class StarScript : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Debug.Log("Star clicked");
-		Serializer.Save<Star> ("star.st", star);
+		GameContext.CurrentStar = star;
 		Application.LoadLevel ("star_scene");
 	}
 }

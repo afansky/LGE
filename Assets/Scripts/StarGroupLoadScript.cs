@@ -9,8 +9,6 @@ public class StarGroupLoadScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("Scene started");
-
 		GameContext.CurrentPlayer = new Player ();
 
 		List<Star> stars = GenerateStars ();

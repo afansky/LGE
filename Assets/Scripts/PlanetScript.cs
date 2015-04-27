@@ -16,8 +16,7 @@ public class PlanetScript : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Debug.Log("Planet clicked");
-		Serializer.Save<Planet> ("planet.st", planet);
+		GameContext.CurrentPlanet = planet;
 		Application.LoadLevel ("planet_scene");
 	}
 

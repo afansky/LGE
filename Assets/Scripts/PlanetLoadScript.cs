@@ -10,7 +10,7 @@ public class PlanetLoadScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		planet = Serializer.Load<Planet> ("planet.st");
+		planet = GameContext.CurrentPlanet;
 
 		List<Ship> ships = PlayerFleet.GetShipsForPlanet (planet);
 		foreach (Ship ship in ships) {
