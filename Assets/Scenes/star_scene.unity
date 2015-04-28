@@ -238,3 +238,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 414706, guid: 1f2a513cb55ea4e0baa2efb73807335a, type: 2}
+  starPrefab: {fileID: 426630, guid: 11275bc56b3cb4d23b8e291ce02a31c5, type: 2}
